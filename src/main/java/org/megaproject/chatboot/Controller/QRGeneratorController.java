@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-public class QRGeneratorController {
+public class FileUploadController {
     @Autowired
     private FileUploadService fileUploadService;
 
     @PostMapping("/upload")
-    public String QRGenerate(@RequestPart("file") MultipartFile file) {
+    public String uploadFile(
+            @RequestPart("file") MultipartFile file) {
         try {
             return fileUploadService.upload(file);
         } catch (Exception e) {
