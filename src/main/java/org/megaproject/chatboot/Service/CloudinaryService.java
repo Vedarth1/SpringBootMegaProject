@@ -14,17 +14,12 @@ public class CloudinaryService {
     @Resource
     private Cloudinary cloudinary;
 
-    public String upload(MultipartFile file, String Folder){
-        try{
-            HashMap<Object, Object> options = new HashMap<>();
-            options.put("folder", Folder);
-            Map uploadedFile = cloudinary.uploader().upload(file.getBytes(), options);
-            String publicId = (String) uploadedFile.get("public_id");
-            return cloudinary.url().secure(true).generate(publicId);
-
-        }catch (IOException e){
-            e.printStackTrace();
-            return null;
-        }
+    public String upload(MultipartFile file, String Folder) throws IOException {
+        HashMap<Object, Object> options = new HashMap<>();
+        options.put("folder", Folder);
+        options.put("resource_type", "auto");
+        Map uploadedFile = cloudinary.uploader().upload(file.getBytes(), options);
+        System.out.println("Upload Result: " + uploadedFile);
+        return (String) uploadedFile.get("secure_url");
     }
 }

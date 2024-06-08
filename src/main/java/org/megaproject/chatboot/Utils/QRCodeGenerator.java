@@ -1,8 +1,6 @@
 package org.megaproject.chatboot.Utils;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
@@ -18,8 +16,7 @@ public class QRCodeGenerator {
 
         ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream();
         MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream);
-        byte[] pngData = pngOutputStream.toByteArray();
-        return pngData;
+        return pngOutputStream.toByteArray();
     }
 
 }

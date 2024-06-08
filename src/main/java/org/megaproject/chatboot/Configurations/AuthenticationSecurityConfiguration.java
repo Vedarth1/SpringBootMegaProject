@@ -38,7 +38,7 @@ public class AuthenticationSecurityConfiguration {
                 .sessionManagement(sessionManagement -> sessionManagement
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-                        .requestMatchers("/login", "/signup").permitAll()
+                        .requestMatchers("/api/auth/login", "/api/auth/signup","/error").permitAll()
                         .anyRequest().authenticated())
                 .httpBasic(httpBasic -> {});
 

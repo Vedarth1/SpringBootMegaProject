@@ -51,6 +51,6 @@ public class ApiService {
         HttpEntity<String> entity = new HttpEntity<>(requestBody, headers);
         ResponseEntity<String> response = restTemplate.postForEntity(url, entity, String.class);
 
-        return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
+        return response;
     }
 }
